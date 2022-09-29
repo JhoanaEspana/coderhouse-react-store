@@ -1,0 +1,9 @@
+.header__cart{
+  display: flex;
+  align-items: center;
+  background-color: var(--red);
+  height: 35px;
+  width: 87px;
+  padding: 8px;
+  border-radius: 50px;
+}
