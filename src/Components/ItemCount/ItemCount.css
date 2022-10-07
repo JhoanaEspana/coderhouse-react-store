@@ -1,0 +1,47 @@
+:root{
+  --dark-blue: #031020;
+  --red: #B11B1B;
+  --grey-light: #DFDFDF;
+}
+
+.itemCount__count__container{
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+  border: solid 0.5px var(--grey-light);
+  border-radius: 5px;
+}
+
+.itemCount__count__btn{
+  width: 30px;
+  font-size: 25px;
+  border-radius: 5px;
+  background-color: var(--grey-light);
+}
+
+.itemCount__btn__add{
+  width: 150px;
+  margin-top: 8px;
+  padding: 8px;
+  text-align: center;
+  background-color: var(--red);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.itemCount__btn__add:hover{
+  background-color: #931616;
+
+}
+
+.itemCount__btn__add span{
+  background-color: var(--red);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.itemCount__btn__add span:hover{
+  background-color: #931616;
+}

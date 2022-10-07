@@ -11,6 +11,7 @@ const App = () => {
     <>
       <NavBar />
       <ItemListContainer showGreeting={greeting}/>
+      
     </>
   );
 };
