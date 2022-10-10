@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import ItemDetailContainer from "../ItemDetail/ItemDetailContainer";
 import ItemList from "../Items/ItemList";
+import "./ItemListContainer.css"
 
 
 const ItemListContainer = (props) => {
@@ -17,15 +19,14 @@ const ItemListContainer = (props) => {
       }
       catch{
         console.log("Error");
-      }
-      finally{
+      }finally{
         setLoading(false);
       }
     };
     getProducts();
   }, []);
 
-  const onAdd = (count) => {
+    const onAdd = (count) => {
     console.log(`El usuario quiere agregar ${count} productos`);
   }
 
@@ -33,7 +34,11 @@ const ItemListContainer = (props) => {
     <div className="itemListContainer_container">
       <h1 style={style.itemListContainerH1}><span style={style.itemListContainerSpan}>Bienvenid@</span> {props.showGreeting}</h1>
       <ItemCount stock={6} initial={1} onAdd={onAdd}/>
-      {loading ? <h2>Cargando Información...</h2> : <ItemList products={products} />}
+      {loading ? (<div className="loader-container">
+                    <div className="spinner"></div>
+                  </div>)
+              : <ItemList products={products} />}
+      <ItemDetailContainer />
     </div>
   );
 };
