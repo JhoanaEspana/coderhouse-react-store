@@ -11,9 +11,12 @@ const Item = ({products}) => {
         <h3>{products.titulo}</h3>
         <p className="item__categoria">Categoría: {products.categoria}</p>
         <p className="item__precio">$ {products.precio}</p>
-        <button><AddShoppingCartIcon className="item__btn_ico" />VER MÁS</button>
+        <a href="#"><AddShoppingCartIcon className="item__btn_ico" />VER MÁS</a>
     </div>  
   )
 }
 
 export default Item;
+
+
+<a href="#">AGREGAR AL CARRITO</a>
