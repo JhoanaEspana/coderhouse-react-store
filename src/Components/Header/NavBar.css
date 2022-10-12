@@ -36,7 +36,3 @@
 .header__nav__ul a:hover{
   color: var(--red);
 }
-
-.header__nav__li{
-  display: flex;
-}

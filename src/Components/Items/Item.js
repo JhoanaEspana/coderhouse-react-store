@@ -17,6 +17,3 @@ const Item = ({products}) => {
 }
 
 export default Item;
-
-
-<a href="#">AGREGAR AL CARRITO</a>

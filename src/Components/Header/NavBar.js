@@ -1,16 +1,17 @@
 import React from "react";
 import "./NavBar.css";
+import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "./CartWidget"
 import logostore from "../../assets/logostore.svg";
 
 const NavBar = () => {
   
   // Arrays Menu
-  const navMenus = [
-    { nombre: "Computadores", id: 8, ruta: "#" },
-    { nombre: "Consolas", id: 9, ruta: "#" },
-    { nombre: "Accesorios", id: 10, ruta: "#" },
-    { nombre: "Contáctenos", id: 11, ruta: "#" },
+  const categorias = [
+    { nombre:"Computadores", id:0, ruta:"/categoria/computadores"},
+    { nombre:"Consolas", id:1, ruta:"/categoria/consolas" },
+    { nombre:"Accesorios", id:2, ruta:"/categoria/accesorios" },
+    { nombre:"Contáctenos", id:3, ruta:"/categoria/contactenos" },
   ];
 
 ////
@@ -20,17 +21,22 @@ const NavBar = () => {
 
   return (
     <header className="header">
-      <div className="header__logo">
-        <img className="header__img" src={logostore} alt="logo tienda online" />
-      </div>
+      <Link to="/">
+        <div className="header__logo">
+          <img className="header__img" src={logostore} alt="logo tienda online" />
+        </div>
+      </Link>
       <nav>
         <ul className="header__nav__ul">
-          {navMenus.map((navMenu) => {
-            return <li key={navMenu.id} className="header__nav__li"><a href={navMenu.ruta}> {navMenu.nombre}</a></li>
-          })}
+            {categorias.map((categoria) => {
+              return <NavLink to={categoria.ruta} key={categoria.id}>{categoria.nombre}</NavLink>
+            })
+          }
         </ul>
       </nav>
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget />
+      </Link>
     </header>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
-import ItemDetailContainer from "../ItemDetail/ItemDetailContainer";
 import ItemList from "../Items/ItemList";
 import "./ItemListContainer.css"
 
@@ -10,10 +10,18 @@ const ItemListContainer = (props) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { idCategory } = useParams();
+/*  const parametros = useParams(); 
+  console.log(parametros.idCategory);*/
+
+  const URL_BASE = "https://clasificadoscolombia.co/wp-json/jhoespana/v1/tienda";
+  const URL_CATEGORY = `${URL_BASE}/categoria/${idCategory}` 
+  
   useEffect (() => {
     const getProducts = async () => {
+      idCategory === undefined?URL=URL_BASE:URL=URL_CATEGORY;
       try{      
-        const res = await fetch ("https://clasificadoscolombia.co/wp-json/jhoespana/v1/tienda")
+        const res = await fetch (URL)
         const data = await res.json();
         setProducts(data);
       }
@@ -24,7 +32,7 @@ const ItemListContainer = (props) => {
       }
     };
     getProducts();
-  }, []);
+  }, [idCategory]);
 
     const onAdd = (count) => {
     console.log(`El usuario quiere agregar ${count} productos`);
@@ -38,7 +46,6 @@ const ItemListContainer = (props) => {
                     <div className="spinner"></div>
                   </div>)
               : <ItemList products={products} />}
-      <ItemDetailContainer />
     </div>
   );
 };
