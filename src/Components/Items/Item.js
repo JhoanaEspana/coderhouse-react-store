@@ -1,6 +1,7 @@
 import React from "react";
 import "./Item.css"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Link } from "react-router-dom";
 
 const Item = ({products}) => {
   return (
@@ -11,7 +12,9 @@ const Item = ({products}) => {
         <h3>{products.titulo}</h3>
         <p className="item__categoria">Categoría: {products.categoria}</p>
         <p className="item__precio">$ {products.precio}</p>
-        <a href="#"><AddShoppingCartIcon className="item__btn_ico" />VER MÁS</a>
+        
+        <Link to={`/producto/${products.id}`}><AddShoppingCartIcon className="item__btn_ico" />VER DETALLES</Link>
+        
     </div>  
   )
 }

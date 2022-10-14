@@ -6,18 +6,16 @@ import logostore from "../../assets/logostore.svg";
 
 const NavBar = () => {
   
-  // Arrays Menu
+  // Arrays Menu 📋
   const categorias = [
-    { nombre:"Computadores", id:0, ruta:"/categoria/computadores"},
-    { nombre:"Consolas", id:1, ruta:"/categoria/consolas" },
-    { nombre:"Accesorios", id:2, ruta:"/categoria/accesorios" },
-    { nombre:"Contáctenos", id:3, ruta:"/categoria/contactenos" },
+    { nombre:"Inicio", id:0, ruta:"/"},
+    { nombre:"Computadores", id:1, ruta:"/categoria/computadores"},
+    { nombre:"Consolas", id:2, ruta:"/categoria/consolas" },
+    { nombre:"Accesorios", id:3, ruta:"/categoria/Accesorios" },
+    { nombre:"Contáctenos", id:4, ruta:"/contact" },
   ];
 
-////
-
-{/* <img src={require(`${img}`)} /> */}
-
+  // <img src={require(`${img}`)} />
 
   return (
     <header className="header">

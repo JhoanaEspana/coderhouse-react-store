@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
 import ItemList from "../Items/ItemList";
-import "./ItemListContainer.css"
+import { Spiner } from "../Spiner";
 
 
 const ItemListContainer = (props) => {
@@ -11,7 +10,8 @@ const ItemListContainer = (props) => {
   const [loading, setLoading] = useState(true);
 
   const { idCategory } = useParams();
-/*  const parametros = useParams(); 
+/* 👆 Lo mismo pero con destructuracion
+  const parametros = useParams(); 
   console.log(parametros.idCategory);*/
 
   const URL_BASE = "https://clasificadoscolombia.co/wp-json/jhoespana/v1/tienda";
@@ -19,9 +19,8 @@ const ItemListContainer = (props) => {
   
   useEffect (() => {
     const getProducts = async () => {
-      idCategory === undefined?URL=URL_BASE:URL=URL_CATEGORY;
       try{      
-        const res = await fetch (URL)
+        const res = await fetch (idCategory === undefined?URL_BASE:URL_CATEGORY)
         const data = await res.json();
         setProducts(data);
       }
@@ -34,17 +33,10 @@ const ItemListContainer = (props) => {
     getProducts();
   }, [idCategory]);
 
-    const onAdd = (count) => {
-    console.log(`El usuario quiere agregar ${count} productos`);
-  }
-
   return(
     <div className="itemListContainer_container">
       <h1 style={style.itemListContainerH1}><span style={style.itemListContainerSpan}>Bienvenid@</span> {props.showGreeting}</h1>
-      <ItemCount stock={6} initial={1} onAdd={onAdd}/>
-      {loading ? (<div className="loader-container">
-                    <div className="spinner"></div>
-                  </div>)
+      {loading ? <Spiner />
               : <ItemList products={products} />}
     </div>
   );
@@ -52,8 +44,7 @@ const ItemListContainer = (props) => {
 
 export default ItemListContainer;
 
-
-
+// estilos dentro del componente :art:
 const style = {
   itemListContainerH1:{
     textAlign: 'center',
