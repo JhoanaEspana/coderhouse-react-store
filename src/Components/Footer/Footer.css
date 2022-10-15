@@ -1,0 +1,15 @@
+
+:root{
+  --dark-blue: #031020;
+  --red: #B11B1B;
+  --grey-light: #DFDFDF;
+}
+
+.Footer__container{
+  display: flex;
+  padding: 25px;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--dark-blue);
+  border-top: 5px solid var(--red);
+}

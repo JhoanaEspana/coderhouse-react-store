@@ -1,62 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import "./NavBar.css";
+import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "./CartWidget"
 import logostore from "../../assets/logostore.svg";
 
-// Arrays Categorias
 const NavBar = () => {
-
-  const [showH, setShowH] = useState(false);
-  const [showM, setShowM] = useState(false);
-
-  const categoriasHombre = [
-    { nombre: "Polos", id: 0, ruta: "#" },
-    { nombre: "Chaquetas", id: 1, ruta: "#" },
-    { nombre: "Sudaderas", id: 0, ruta: "#" },
+  
+  // Arrays Menu 📋
+  const categorias = [
+    { nombre:"Inicio", id:0, ruta:"/"},
+    { nombre:"Computadores", id:1, ruta:"/categoria/computadores"},
+    { nombre:"Consolas", id:2, ruta:"/categoria/consolas" },
+    { nombre:"Accesorios", id:3, ruta:"/categoria/Accesorios" },
+    { nombre:"Contáctenos", id:4, ruta:"/contact" },
   ];
 
-  const categoriasMujer = [
-    { nombre: "Polos", id: 0, ruta: "#" },
-    { nombre: "Pantalonetas", id: 1, ruta: "#" },
-    { nombre: "Buzos", id: 0, ruta: "#" },
-  ];
-////
+  // <img src={require(`${img}`)} />
 
   return (
     <header className="header">
-      <div className="header__logo">
-        <img className="header__img" src={logostore} alt="logo tienda online" />
-      </div>
+      <Link to="/">
+        <div className="header__logo">
+          <img className="header__img" src={logostore} alt="logo tienda online" />
+        </div>
+      </Link>
       <nav>
         <ul className="header__nav__ul">
-          <li><a href="#">Colecciones</a></li>
-          <li className="header__nav__li">
-            <a href="#" onClick={() => setShowH(!showH)}>Hombre</a>
-
-            {showH &&
-            <div className="header__nav__dropdown" >
-              {categoriasHombre.map((categoriaHombre) => {
-                  return <li><a key={categoriaHombre.id} href={categoriaHombre.ruta}> {categoriaHombre.nombre}</a></li>
-              })}
-            </div>
-            }
-
-          </li>
-          <li>
-            <a href="#" onClick={() => setShowM(!showM)}>Mujer</a>
-            {showM &&
-            <div className="header__nav__dropdown">
-              {categoriasMujer.map((categoriaMujer) => {
-                  return <li><a key={categoriaMujer.id} href={categoriaMujer.ruta}>{categoriaMujer.nombre}</a></li>
-              })}
-            </div>
-            }
-
-          </li>
-          <li><a href="#">Contáctanos</a></li>
+            {categorias.map((categoria) => {
+              return <NavLink to={categoria.ruta} key={categoria.id}>{categoria.nombre}</NavLink>
+            })
+          }
         </ul>
       </nav>
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget />
+      </Link>
     </header>
   );
 };
