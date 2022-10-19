@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import "./ItemDetail.css"
 import ItemCount from "../ItemCount/ItemCount";
+import { Context } from "../../Context/CartContext";
 
 
 const ItemDetail = ({ product }) => {
 
-  const onAdd = (count) => {
-    console.log(`El usuario quiere agregar ${count} productos`);
+  const [showItemCount, setShowItemCount] = useState(true);
+
+  const resultado = useContext(Context)
+
+  const onAdd = ( count ) => {
+    console.log(`El usuario quiere agregar ${count} unidades`);
+    setShowItemCount(false);
   }
 
   return (
@@ -22,7 +29,11 @@ const ItemDetail = ({ product }) => {
         <p className="ItemDetail__text categoria">Categoría: {product.categoria}</p>
         <p className="stock">Stock: {product.stock}</p>
         <p className="ItemDetail__descripcion"><span className="descripcion">Descripción:</span> {product["descripción"]}</p>
-        <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>
+        {showItemCount ? (<ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>)
+                        : (
+                        <Link to={'/cart'}>
+                          <button>FINALIZAR COMPRA</button>
+                        </Link>)}
           
         <div className="ItemDetail__galery">
         {/* {product.galeria?.map((imagen, index) */}

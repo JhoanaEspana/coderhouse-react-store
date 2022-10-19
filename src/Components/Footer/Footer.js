@@ -11,9 +11,9 @@ export const Footer = () => {
 
 
   return(
-    <div className="Footer__container">
+    <div className="footer__container">
       <img src={logostore_bn} alt=""/>
-      <div Footer__redes>
+      <div>
         <Link to={{ pathname:`https://github.com/JhoanaEspana`}} target="_blank">
           <GitHubIcon sx={{ color: grey[50], margin:[2]}} fontSize="large" />
         </Link>
@@ -25,7 +25,7 @@ export const Footer = () => {
         </Link>
       </div>
       <div>
-        <p>©2022, Jhoana España</p>
+        <p className="footer__text">©2022, Jhoana España</p>
       </div>
     </div>
   )

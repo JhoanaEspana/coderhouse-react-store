@@ -20,7 +20,7 @@ const ItemListContainer = (props) => {
   useEffect (() => {
     const getProducts = async () => {
       try{      
-        const res = await fetch (idCategory === undefined?URL_BASE:URL_CATEGORY)
+        const res = await fetch (idCategory?URL_CATEGORY:URL_BASE)
         const data = await res.json();
         setProducts(data);
       }

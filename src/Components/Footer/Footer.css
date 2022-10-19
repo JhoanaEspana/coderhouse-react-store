@@ -5,11 +5,15 @@
   --grey-light: #DFDFDF;
 }
 
-.Footer__container{
+.footer__container{
   display: flex;
   padding: 25px;
   flex-direction: column;
   align-items: center;
   background-color: var(--dark-blue);
   border-top: 5px solid var(--red);
+}
+
+.footer__text{
+  color: var(--grey-light);
 }
