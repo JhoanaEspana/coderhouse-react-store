@@ -1,4 +1,4 @@
-.header__cart{
+.CartWidget__header{
   display: flex;
   align-items: center;
   background-color: var(--red);
@@ -7,3 +7,10 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+.CartWidget__txt{
+  color: #fff;
+  padding-left: 15px;
+  text-decoration: none;
+}
+

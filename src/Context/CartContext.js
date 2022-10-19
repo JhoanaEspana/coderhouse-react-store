@@ -1,26 +1,37 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 export const CartContext = createContext();
 
 export const CustomProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [qty, setQty] = useState(0);
+  const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const cantidad = 0;
-    const totalC = 0;
+    let cantidad = 0;
+    let totalC = 0;
     cart.forEach(producto => {
       cantidad += producto.cantidad;
-      totalC += (producto.price * producto.cantidad)
+      totalC += (producto.precio * producto.cantidad)
     });
-    setQty(cantidad);
+    setCantidad(cantidad);
     setTotal(totalC);
   }, [cart]);
   
   const addItem = (producto, cantidad) => {
-    console.log(`esta funcion se encarga de agregar ${cantidad} cantidades del producto ${producto} al carrito`);
+    if(isInCart(producto.id)){
+      setCart(cart.map(item => {
+        return item.id === producto.id ? {...item, cantidad: item.cantidad + cantidad } : item
+      }));
+    }else{
+      setCart([...cart, {...producto, cantidad}]);
+    }
+    //console.log(`esta funcion se encarga de agregar ${cantidad} cantidades del producto ${producto} al carrito`);
   }
+
+  console.log('carrito', cart);
+  console.log('total', total);
+
 
   const deleteItem = (id) => {
     setCart(cart.filter(producto => producto.id !== id));
@@ -29,19 +40,27 @@ export const CustomProvider = ({ children }) => {
     //setCart(filtrado);
   }
 
-  const IsInCart = (id) => {
+  const isInCart = (id) => {
     return cart.some(producto => producto.id === id)
   }
   
   const clear = () => {
     setCart([]);
-    setQty(0);
+    setCantidad(0);
     setTotal(0);
   }
 
   return(  
-    <CartContext.Provider value={{cart, qty, total, addItem, deleteItem, IsInCart, clear}}>
-      { children }
+    <CartContext.Provider value={{
+      cart,
+      cantidad,
+      total,
+      addItem,
+      deleteItem,
+      isInCart,
+      clear
+      }}>
+        { children }
     </CartContext.Provider>
   );
 };

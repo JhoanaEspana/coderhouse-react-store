@@ -46,3 +46,17 @@
   margin-top: 30px;
   padding: 10px;
 }
+
+.itemDetail__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+}

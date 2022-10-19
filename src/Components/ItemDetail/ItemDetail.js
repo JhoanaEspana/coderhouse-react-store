@@ -1,21 +1,21 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./ItemDetail.css"
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../Context/CartContext";
 
 
 const ItemDetail = ({ product }) => {
 
-  const [showItemCount, setShowItemCount] = useState(true);
-
+  const [showItemCount, setShowItemCount] = useState(false);
   // const resultado = useContext(Context);
   const { addItem } = useContext(CartContext);
 
-  const onAdd = ( count ) => {
+  const onAdd = ( quantity ) => {
     // resultado.addItem(product, count);
-    addItem.addItem(product, count);
-    setShowItemCount(false);
+    setShowItemCount(true);
+    addItem(product, quantity);
   }
 
   return (
@@ -31,11 +31,8 @@ const ItemDetail = ({ product }) => {
         <p className="ItemDetail__text categoria">Categoría: {product.categoria}</p>
         <p className="stock">Stock: {product.stock}</p>
         <p className="ItemDetail__descripcion"><span className="descripcion">Descripción:</span> {product["descripción"]}</p>
-        {showItemCount ? (<ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>)
-                        : (
-                        <Link to={'/cart'}>
-                          <button>FINALIZAR COMPRA</button>
-                        </Link>)}
+        {showItemCount ? <Link to={'/cart'}><button className="itemDetail__btn"><AddShoppingCartIcon/>FINALIZAR COMPRA</button></Link>
+                        : <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>}
           
         <div className="ItemDetail__galery">
         {/* {product.galeria?.map((imagen, index) */}

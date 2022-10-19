@@ -6,7 +6,7 @@
 
 .itemCount__count__container{
   display: flex;
-  width: 150px;
+  width: 220px;
   justify-content: space-between;
   border: solid 0.5px var(--grey-light);
   border-radius: 5px;
@@ -20,7 +20,7 @@
 }
 
 .itemCount__btn__add{
-  width: 150px;
+  width: 220px;
   margin-top: 8px;
   padding: 8px;
   text-align: center;
