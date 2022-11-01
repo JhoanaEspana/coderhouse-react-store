@@ -10,12 +10,20 @@ const ItemDetail = ({ product }) => {
 
   const [showItemCount, setShowItemCount] = useState(false);
   // const resultado = useContext(Context);
-  const { addItem } = useContext(CartContext);
+  const { addItem, isInCart, cart } = useContext(CartContext);
+
+  let stock = 0;
+  if(isInCart(product.id)){
+    const found = cart.find(item => item.id === product.id);
+    stock = product.stock - found.cantidad;
+  }else{
+    stock = product.stock;
+  }
 
   const onAdd = ( quantity ) => {
     // resultado.addItem(product, count);
-    setShowItemCount(true);
     addItem(product, quantity);
+    setShowItemCount(false);
   }
 
   return (
@@ -29,10 +37,11 @@ const ItemDetail = ({ product }) => {
         <h3 className="ItemDetail__titulo">{product.titulo}</h3>
         <p className="ItemDetail__precio">$ {product.precio}</p>
         <p className="ItemDetail__text categoria">Categoría: {product.categoria}</p>
-        <p className="stock">Stock: {product.stock}</p>
+        <p className="stock">Stock: {stock}</p>
         <p className="ItemDetail__descripcion"><span className="descripcion">Descripción:</span> {product["descripción"]}</p>
-        {showItemCount ? <Link to={'/cart'}><button className="itemDetail__btn"><AddShoppingCartIcon/>FINALIZAR COMPRA</button></Link>
-                        : <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>}
+
+        {!showItemCount ? <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
+                      : <Link to={'/cart'}><button className="itemDetail__btn"><AddShoppingCartIcon/>FINALIZAR COMPRA</button></Link>}
           
         <div className="ItemDetail__galery">
         {/* {product.galeria?.map((imagen, index) */}

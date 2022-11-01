@@ -29,9 +29,8 @@ export const CustomProvider = ({ children }) => {
     //console.log(`esta funcion se encarga de agregar ${cantidad} cantidades del producto ${producto} al carrito`);
   }
 
-  console.log('carrito', cart);
-  console.log('total', total);
-
+  // console.log('carrito', cart);
+  // console.log('total', total);
 
   const deleteItem = (id) => {
     setCart(cart.filter(producto => producto.id !== id));

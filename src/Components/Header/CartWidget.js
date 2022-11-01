@@ -11,7 +11,7 @@ export const CartWidget = () => {
   return (
     <div className="CartWidget__header">
       <ShoppingCartIcon sx={{ color: grey[50] }} fontSize="small" />
-      <p className="CartWidget__txt">{ cantidad }</p>
+      <p className="CartWidget__txt">{ cantidad || ''}</p>
     </div>
   );
 };
