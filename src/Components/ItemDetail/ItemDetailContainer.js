@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../Spiner.css"
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import { Spiner } from "../Spiner";
+import { Spiner } from "../Spiner/Spiner";
+import { getDoc, collection, doc } from "firebase/firestore"
+import { db } from "../../firebase/firebase" 
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
@@ -10,16 +11,20 @@ const ItemDetailContainer = () => {
   
   const { idDetail } = useParams();
 
-  const URL_BASE = "https://clasificadoscolombia.co/wp-json/jhoespana/v1/tienda";
-
   useEffect (() => {
+    const productCollection = collection( db, 'productos');
+    const refDoc = doc(productCollection, idDetail)
+
     const getProduct = async () => {
       try{
-        const res = await fetch (`${URL_BASE}/${idDetail}`)
-        const data = await res.json();
-        setProduct(data)
-      }catch{
-        console.log("Error");
+        const res = await getDoc(refDoc);
+        const dataDoc = {
+          id: res.id,
+          ...res.data()
+        };
+        setProduct(dataDoc)
+      }catch(error){
+        console.log(error);
       }finally{
         setLoading(false);
       }

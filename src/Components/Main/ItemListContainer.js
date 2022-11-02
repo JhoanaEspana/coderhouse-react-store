@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../Items/ItemList";
-import { Spiner } from "../Spiner";
+import { Spiner } from "../Spiner/Spiner";
+import { getDocs, collection, query, where } from "firebase/firestore"
+import { db } from "../../firebase/firebase" 
 
 
 const ItemListContainer = (props) => {
@@ -10,22 +12,25 @@ const ItemListContainer = (props) => {
   const [loading, setLoading] = useState(true);
 
   const { idCategory } = useParams();
-/* 👆 Lo mismo pero con destructuracion
-  const parametros = useParams(); 
-  console.log(parametros.idCategory);*/
-
-  const URL_BASE = "https://clasificadoscolombia.co/wp-json/jhoespana/v1/tienda";
-  const URL_CATEGORY = `${URL_BASE}/categoria/${idCategory}` 
+  
   
   useEffect (() => {
-    const getProducts = async () => {
+    const productCollection = collection( db, 'productos');
+    const q = idCategory ? query(productCollection, where('categoria', '==', idCategory)):productCollection;
+
+  const getProducts = async () => {
       try{      
-        const res = await fetch (idCategory?URL_CATEGORY:URL_BASE)
-        const data = await res.json();
-        setProducts(data);
+        const res = await getDocs(q);
+        const dataDocs = res.docs.map(item =>{
+          return{
+            id: item.id,
+            ...item.data()
+          };
+        });
+        setProducts(dataDocs);
       }
-      catch{
-        console.log("Error");
+      catch(error){
+        console.log(error);
       }finally{
         setLoading(false);
       }

@@ -23,7 +23,7 @@ const ItemDetail = ({ product }) => {
   const onAdd = ( quantity ) => {
     // resultado.addItem(product, count);
     addItem(product, quantity);
-    setShowItemCount(false);
+    setShowItemCount(true);
   }
 
   return (
@@ -43,12 +43,7 @@ const ItemDetail = ({ product }) => {
         {!showItemCount ? <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
                       : <Link to={'/cart'}><button className="itemDetail__btn"><AddShoppingCartIcon/>FINALIZAR COMPRA</button></Link>}
           
-        <div className="ItemDetail__galery">
-        {/* {product.galeria?.map((imagen, index) */}
-          {product.galeria.map((imagen, index) => {
-            return <img key={index} src={imagen} alt="" />
-          })}
-        </div>
+
       </div>
     </div>
   );
