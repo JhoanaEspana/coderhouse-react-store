@@ -10,11 +10,11 @@ Creada con ReactJS, se conecta a un backend realizado en Firebase_
 
 ---
 #### Tecnologías utilizadas
-ReactJS
-JS
-CSS
-HTML
-Firebase
+- ReactJS
+- JS
+- CSS
+- HTML
+- Firebase
 
 #### librerías
 
