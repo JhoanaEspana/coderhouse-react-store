@@ -6,7 +6,8 @@ Creada con ReactJS, se conecta a un backend realizado en Firebase_
 
 ### Project by: Jhoana España
 ---
-![imagen de store](./public/capturatienda.png)
+![imagen de store](./public/capturatienda.jpg)
+
 ---
 #### Tecnologías utilizadas
 ReactJS
