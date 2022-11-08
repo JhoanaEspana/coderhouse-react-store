@@ -6,42 +6,43 @@
 
 .itemCount__count__container{
   display: flex;
+  flex-direction: column;
   width: 220px;
-  justify-content: space-between;
-  border: solid 0.5px var(--grey-light);
   border-radius: 5px;
 }
 
 .itemCount__count__btn{
   width: 30px;
   font-size: 25px;
-  border-radius: 5px;
+  border: none;
+  cursor: pointer;
   background-color: var(--grey-light);
 }
 
-.itemCount__btn__add{
-  width: 220px;
-  margin-top: 8px;
-  padding: 8px;
-  text-align: center;
+.itemCount__count__btn:hover{
   background-color: var(--red);
-  border-radius: 5px;
+  color: #fff
+}
+
+.itemCount__countbtn{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--grey-light);
+}
+
+.itemCount__btn__add{
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: var(--red);
+  font-size: 18px;
+  color: #fff;
+  border: none;
   cursor: pointer;
 }
 
 .itemCount__btn__add:hover{
-  background-color: #931616;
-
-}
-
-.itemCount__btn__add span{
-  background-color: var(--red);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.itemCount__btn__add span:hover{
-  background-color: #931616;
+  background-color: #fff;
+  color: var(--red);
+  border: 2px solid var(--red);
 }

@@ -1,0 +1,41 @@
+.cartitem__container{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartitem__container__img{
+  display: flex;
+  align-items: center;
+  width: 400px;
+}
+
+.cartitem__container__img h3{
+  padding: 25px;
+}
+
+.cartitem__container__img img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cartitem__container__detail{
+  text-align: end;
+}
+
+.cartitem__btn{
+  padding: 8px;
+  margin-top: 10px;
+  background-color: var(--red);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cartitem__btn:hover{
+  background-color: #fff;
+  color: var(--red);
+  border: 1px solid var(--red);
+}

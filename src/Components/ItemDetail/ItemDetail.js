@@ -38,12 +38,10 @@ const ItemDetail = ({ product }) => {
         <p className="ItemDetail__precio">$ {product.precio}</p>
         <p className="ItemDetail__text categoria">Categoría: {product.categoria}</p>
         <p className="stock">Stock: {stock}</p>
-        <p className="ItemDetail__descripcion"><span className="descripcion">Descripción:</span> {product["descripción"]}</p>
+        <p className="ItemDetail__descripcion"><span className="descripcion">Descripción:</span>{product["descripción"]}</p>
 
         {!showItemCount ? <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
                       : <Link to={'/cart'}><button className="itemDetail__btn"><AddShoppingCartIcon/>FINALIZAR COMPRA</button></Link>}
-          
-
       </div>
     </div>
   );

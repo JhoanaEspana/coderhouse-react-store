@@ -2,12 +2,19 @@ import React, { createContext, useState, useEffect } from 'react'
 
 export const CartContext = createContext();
 
+const localStorageCart = () => {
+  const cartList = localStorage.getItem('shoppinglist')
+  return cartList ? JSON.parse(cartList) : []
+}
+
 export const CustomProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(localStorageCart);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    localStorage.setItem('shoppinglist', JSON.stringify(cart))
+
     let cantidad = 0;
     let totalC = 0;
     cart.forEach(producto => {

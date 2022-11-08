@@ -12,7 +12,6 @@ const NavBar = () => {
     { nombre:"Computadores", id:1, ruta:"/categoria/computadores"},
     { nombre:"Consolas", id:2, ruta:"/categoria/consolas" },
     { nombre:"Accesorios", id:3, ruta:"/categoria/Accesorios" },
-    { nombre:"Contáctenos", id:4, ruta:"/contact" },
   ];
 
   // <img src={require(`${img}`)} />

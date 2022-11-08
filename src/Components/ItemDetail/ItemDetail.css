@@ -8,6 +8,7 @@
   width: 100%;
   max-width: 1200px;
   display: flex;
+  align-items: center;
   margin: 100px auto;
   padding: 45px 30px;
   background-color: #fff;
@@ -31,7 +32,7 @@
   margin-bottom: 15px;
 }
 
-.ItemDetail__text, .categoria, .stock, .descripcion{
+.ItemDetail__text, .categoria, .stock{
   color: var(--red);
   font-weight: 500;
   margin-bottom: 8px;
@@ -48,15 +49,16 @@
 }
 
 .itemDetail__btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 220px;
-  padding: 8px;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+  padding: 10px 20px;
   background-color: var(--red);
+  font-size: 18px;
   color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.itemDetail__btn:hover{
+  background-color: #fff;
+  color: var(--red);
+  border: 2px solid var(--red);
 }

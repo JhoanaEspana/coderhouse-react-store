@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import "./Form.css"
 import { db } from "../../firebase/firebase"
 import {collection, addDoc, serverTimestamp, doc, updateDoc} from 'firebase/firestore';
 
@@ -69,17 +70,17 @@ const Form = ({cart, total, clear, tomarId}) => {
 
   return (
     <form className='form' action='' onSubmit={finalizarCompra}>
-        <label className='form__span'>Nombre*</label>
+        <label className='form__title'>Nombre*</label>
         <input type="text" 
                 name="name" 
                 value={userName} onChange={capturarNombre} required>
         </input>
-        <label className='form__span'>Email*</label>
+        <label className='form__title'>Email*</label>
         <input type="mail"
                 name="mail"
                 value={mail} onChange={capturarEmail} required>
         </input>
-        <label className='form__span'>Teléfono*</label>
+        <label className='form__title'>Teléfono*</label>
         <input type="tel"
                 name="phone" 
                 value={phone} onChange={capturarTelefono} required>
