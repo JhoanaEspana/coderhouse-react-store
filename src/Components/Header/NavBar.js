@@ -14,8 +14,6 @@ const NavBar = () => {
     { nombre:"Accesorios", id:3, ruta:"/categoria/Accesorios" },
   ];
 
-  // <img src={require(`${img}`)} />
-
   return (
     <header className="header">
       <Link to="/">

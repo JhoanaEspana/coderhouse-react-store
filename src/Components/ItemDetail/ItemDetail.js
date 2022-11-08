@@ -9,7 +9,6 @@ import { CartContext } from "../../Context/CartContext";
 const ItemDetail = ({ product }) => {
 
   const [showItemCount, setShowItemCount] = useState(false);
-  // const resultado = useContext(Context);
   const { addItem, isInCart, cart } = useContext(CartContext);
 
   let stock = 0;
@@ -21,7 +20,6 @@ const ItemDetail = ({ product }) => {
   }
 
   const onAdd = ( quantity ) => {
-    // resultado.addItem(product, count);
     addItem(product, quantity);
     setShowItemCount(true);
   }
